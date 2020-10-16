@@ -20,38 +20,49 @@ const LoginScreen = ({ navigation }) => {
             <Image source={require('../Sample/img/logo.png')} style={styles.imageLogo} />
           </ImageBackground>
 
-          <ImageBackground style={styles.imageBackground2}>
-            <ImageBackground source={require('../Sample/img/gambar.png')}
-              style={styles.imageBody} />
+          <ImageBackground style={{ backgroundColor: '#F7F6ED' }}>
 
-
-            <View style={{ backgroundColor: 'white', padding: 20, width: '90%', alignSelf: 'center' }}>
-              <Text style={styles.headerSignIn}>Sign In</Text>
-              <Text style={styles.fillText}>Email</Text>
-              <TextInput style={styles.txtInput} />
-              <Text style={styles.fillText}>Password</Text>
-              <TextInput style={styles.txtInput} secureTextEntry={true} />
-
-              <TouchableOpacity
-                style={styles.buttonLogin}>
-                <Text style={styles.txtSignin}>Sign In</Text>
-              </TouchableOpacity>
-
-              <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
-                <Text>Don't have an account?</Text>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('RegisterScreen')}>
-                  <Text style={{ color: '#4f6e65' }}> Sign Up</Text>
-                </TouchableOpacity>
+            <ImageBackground style={{ height: '20%', width: '100%' }}>
+              <View>
+                <Image source={require('../Sample/img/gambar.png')}
+                  style={styles.imageBody} />
               </View>
+            </ImageBackground>
 
-            </View>
+            <ImageBackground style={{}}>
+              <ImageBackground style={styles.imageBackground2}>
+                <View style={{ backgroundColor: 'white', padding: 20, width: '90%', alignSelf: 'center' }}>
+                  <Text style={styles.headerSignIn}>Sign In</Text>
+                  <Text style={styles.fillText}>Email</Text>
+                  <TextInput style={styles.txtInput} />
+                  <Text style={styles.fillText}>Password</Text>
+                  <TextInput style={styles.txtInput} secureTextEntry={true} />
 
-            <View>
-              <View style={{ borderTopWidth: 1, width: '90%', alignSelf: 'center', borderTopColor: '#C4C4C4' }}></View>
-              <Text style={{ color: '#367874', alignSelf: 'center' }}>2020, SayurHub.</Text>
-            </View>
+                  <TouchableOpacity
+                    style={styles.buttonLogin}
+                    onPress={() => navigation.navigate('MainScreen')} >
+                    <Text style={styles.txtSignin}>Sign In</Text>
+                  </TouchableOpacity>
 
+                  <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
+                    <Text>Don't have an account?</Text>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('RegisterScreen')}>
+                      <Text style={{ color: '#4f6e65' }}> Sign Up</Text>
+                    </TouchableOpacity>
+                  </View>
+
+                </View>
+
+              </ImageBackground>
+
+            </ImageBackground>
+            <ImageBackground style={{width: '100%'}}>
+              <View>
+                <View style={{ borderTopWidth: 1, width: '90%', alignSelf: 'center', borderTopColor: '#C4C4C4' }}></View>
+                <Text style={{ color: '#367874', alignSelf: 'center' }}>2020, SayurHub.</Text>
+              </View>
+            </ImageBackground>
           </ImageBackground>
         </View>
       </TouchableWithoutFeedback>
@@ -68,15 +79,16 @@ const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({
   imageBody: {
-    width: 250,
-    height: 250,
+    width: 220,
+    height: 220,
     alignSelf: 'flex-start',
   },
 
   headerSignIn: {
     color: 'black',
     fontSize: 22,
-    alignSelf: 'center'},
+    alignSelf: 'center'
+  },
 
   imageLogo: {
     height: 40,
@@ -114,8 +126,7 @@ const styles = StyleSheet.create({
 
   imageBackground2: {
     width: '100%',
-    height: '90%',
-    backgroundColor: '#F7F6ED'
+    height: '70%',
   },
 
   textPress: {
