@@ -1,13 +1,12 @@
 import React, { Component, useState } from 'react';
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Alert } from 'react-native';
-
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
-const LoginPage = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
 
 
   return (
@@ -18,11 +17,11 @@ const LoginPage = ({ navigation }) => {
         <View>
 
           <ImageBackground style={styles.imageBackground1}>
-            <Image source={require('../assets/img/logo.png')} style={styles.imageLogo} />
+            <Image source={require('../Sample/img/logo.png')} style={styles.imageLogo} />
           </ImageBackground>
 
           <ImageBackground style={styles.imageBackground2}>
-            <ImageBackground source={require('../assets/img/gambar.png')}
+            <ImageBackground source={require('../Sample/img/gambar.png')}
               style={styles.imageBody} />
 
 
@@ -41,7 +40,7 @@ const LoginPage = ({ navigation }) => {
               <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
                 <Text>Don't have an account?</Text>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('RegisterPage')}>
+                  onPress={() => navigation.navigate('RegisterScreen')}>
                   <Text style={{ color: '#4f6e65' }}> Sign Up</Text>
                 </TouchableOpacity>
               </View>
@@ -80,8 +79,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'},
 
   imageLogo: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 85,
     alignSelf: 'center',
     marginTop: 10
   },
@@ -142,4 +141,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default LoginPage;
+export default LoginScreen;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Button, handleSubmit, ImageBackground } from 'react-native';
 import 'react-native-gesture-handler';
 
-const RegisterPage = ({navigation}) => {
+const RegisterScreen = ({navigation}) => {
 
 
       return (
@@ -13,11 +13,11 @@ const RegisterPage = ({navigation}) => {
           <View>
   
             <ImageBackground style={styles.imageBackground1}>
-              <Image source={require('../assets/img/logo.png')} style={styles.imageLogo} />
+              <Image source={require('../Sample/img/logo.png')} style={styles.imageLogo} />
             </ImageBackground>
   
             <ImageBackground style={styles.imageBackground2}>
-              <ImageBackground source={require('../assets/img/gambar.png')}
+              <ImageBackground source={require('../Sample/img/gambar.png')}
                 style={styles.imageBody} />
   
   
@@ -40,7 +40,7 @@ const RegisterPage = ({navigation}) => {
                 <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
                   <Text>Already have an account?</Text>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('LoginPage')}>
+                    onPress={() => navigation.navigate('LoginScreen')}>
                     <Text style={{ color: '#4f6e65' }}> Sign In</Text>
                   </TouchableOpacity>
                 </View>
@@ -76,8 +76,8 @@ const RegisterPage = ({navigation}) => {
         alignSelf: 'center'},
     
       imageLogo: {
-        height: 50,
-        width: 50,
+        height: 40,
+        width: 85,
         alignSelf: 'center',
         marginTop: 10
       },
@@ -139,4 +139,4 @@ const RegisterPage = ({navigation}) => {
     
     })
 
-    export default RegisterPage
+    export default RegisterScreen;
