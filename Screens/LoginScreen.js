@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   imageBody: {
     width: 220,
     height: 220,
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-start'
   },
 
   headerSignIn: {
@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
 
   imageBackground1: {
     width: width,
-    height: '10%'
+    height: '10%',
+    marginTop: 10
   },
 
   imageBackground2: {
