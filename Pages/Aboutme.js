@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     color: 'orange'
   },
 
-  buttonLogOut: {
+buttonLogOut: {
     alignSelf: 'center',
     backgroundColor: '#D65445',
     padding: 10,
