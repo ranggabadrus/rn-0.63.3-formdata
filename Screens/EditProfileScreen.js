@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, ImageBackground, Image, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-export default function EditprofileScreen() {
+export default function EditProfileScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "android" ? "padding" : "height"}

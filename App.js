@@ -2,7 +2,7 @@ import React from 'react';
 import RegisterScreen from './Screens/RegisterScreen';
 import LoginScreen from './Screens/LoginScreen'
 import MainScreen from './Screens/MainScreen'
-import EditprofileScreen from './Screens/EditprofileScreen';
+import EditProfileScreen from './Screens/EditProfileScreen';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,10 +15,10 @@ const  TestingScreen = (props) => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <Text>Testing !</Text>
     
-    <Button
+    {/* <Button
       title='Testing'
       onPress={() => props.navigation.navigate('TestingScreen')}
-    />
+    /> */}
     
     <Button
       title='Splash'
@@ -40,10 +40,10 @@ const  TestingScreen = (props) => {
       onPress={() => props.navigation.navigate('Register')}
     />
     
-    <Button
+    {/* <Button
       title='Home Screen'
       onPress={() => props.navigation.navigate('Home')}
-    />
+    /> */}
     <Button
       title='Edit Profile'
       onPress={() => props.navigation.navigate('EditProfile')}
@@ -79,12 +79,11 @@ const Stack = createStackNavigator();
 const RootStackScreen = ({ navigation }) => (
   <Stack.Navigator headerMode='none'>
     <Stack.Screen name="Testing" component={TestingScreen} />
-    
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Main" component={MainScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
-    <Stack.Screen name="EditProfile" component={EditprofileScreen} />
+    <Stack.Screen name="EditProfile" component={EditProfileScreen} />
 
   </Stack.Navigator>
 );
