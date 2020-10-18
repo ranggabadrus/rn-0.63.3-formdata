@@ -1,8 +1,11 @@
 import React from 'react'
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import back from './../Sample/img/back.png'
+import Vector from './../Sample/img/Vector.png'
 
-export default function Aboutme() {
+
+export default function AboutMeScreen() {
   return (
 
     <View>
@@ -10,12 +13,12 @@ export default function Aboutme() {
 
         <View>
           <TouchableOpacity>
-            <Image source={require('../Sample/img/back.png')} style={styles.logoBack} />
+            <Image source={back} style={styles.logoBack} />
           </TouchableOpacity>
         </View>
 
         <View>
-          <Image source={require('../Sample/img/Vector.png')} style={styles.logoImage} />
+          <Image source={Vector} style={styles.logoImage} />
         </View>
       </View>
 
@@ -69,8 +72,9 @@ export default function Aboutme() {
 
 const styles = StyleSheet.create({
   imgBackground1: {
+    
     flexDirection: 'row',
-    alignContent: 'space-between',
+    justifyContent: 'space-between',
     marginTop: 10,
   },
 
@@ -82,13 +86,13 @@ const styles = StyleSheet.create({
   logoBack: {
     height: 20,
     width: 20,
-    marginRight: 295
+    //marginRight: 295
   },
 
   logoImage: {
     height: 25,
     width: 30,
-    marginLeft: 10
+   // marginLeft: 10
   },
 
   imgBackground2: {

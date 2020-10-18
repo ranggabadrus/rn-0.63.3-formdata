@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import AboutMe from '../Pages/Aboutme';
+import AboutMeScreen from '../Pages/AboutMeScreen';
 import HomeScreen from '../Pages/HomeScreen'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EditProfileScreen from './EditProfileScreen';
@@ -32,7 +32,7 @@ const MainScreen = () => {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={EditProfileScreen} />
+      <Tab.Screen name="About me" component={AboutMeScreen} />
     </Tab.Navigator>
 
   );

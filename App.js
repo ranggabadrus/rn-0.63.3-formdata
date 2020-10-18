@@ -26,7 +26,7 @@ const  TestingScreen = (props) => {
     />
    
     <Button
-      title='Main'
+      title='Main Screen'
       onPress={() => props.navigation.navigate('Main')}
     />
     
@@ -40,10 +40,10 @@ const  TestingScreen = (props) => {
       onPress={() => props.navigation.navigate('Register')}
     />
     
-    {/* <Button
-      title='Home Screen'
-      onPress={() => props.navigation.navigate('Home')}
-    /> */}
+     {/* <Button
+      title='About me'
+      onPress={() => props.navigation.navigate('About me')}
+    />  */}
     <Button
       title='Edit Profile'
       onPress={() => props.navigation.navigate('EditProfile')}
