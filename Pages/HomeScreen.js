@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux'
 
 
 const HomeScreen = () => {
-  const nama = useSelector((state)=>state.first)
+  //const nama = useSelector((state)=>state.first)
   //alert(nama)
   return (
     <View style={{margin:10,flex:1}}>

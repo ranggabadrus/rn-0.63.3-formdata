@@ -6,7 +6,7 @@ import Vector from './../Sample/img/Vector.png'
 import {useSelector} from 'react-redux'
 
 export default function AboutMeScreen() {
-  const nama = useSelector((state)=>state.middle)
+  //const nama = useSelector((state)=>state.middle)
   //alert(nama)
   return (
 
