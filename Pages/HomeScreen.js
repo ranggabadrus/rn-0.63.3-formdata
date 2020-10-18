@@ -8,9 +8,10 @@ import menu from '../Sample/img/menu.png'
 import {useSelector} from 'react-redux'
 
 
+
 const HomeScreen = () => {
-  const nama = useSelector((state)=>state)
-  alert(nama.middle)
+  const nama = useSelector((state)=>state.first)
+  alert(nama)
   return (
     <View style={{margin:0,flex:1}}>
         <View style={{flexDirection:'row',justifyContent:'space-around',
@@ -40,10 +41,10 @@ const HomeScreen = () => {
           <Image source={Rectangle6} style={{
            position:'relative',
            top:10,left : 110,
-          width:300,height:120}} />
+          width:300,height:140}} />
           <View style={{position:'absolute',top:10}}>
-            <Text style={{fontWeight:'bold',fontSize:20}}>Fresh Fruits and Vegetables,</Text>
-            <Text style={{fontWeight:'bold',fontSize:20}}>at Your Doorstep</Text>
+            <Text style={{color:'white',fontWeight:'bold',fontSize:20}}>Fresh Fruits and Vegetables,</Text>
+            <Text style={{color:'white',fontWeight:'bold',fontSize:20}}>at Your Doorstep</Text>
           </View>
           
         </View>

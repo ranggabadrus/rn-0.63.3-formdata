@@ -3,9 +3,11 @@ import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import back from './../Sample/img/back.png'
 import Vector from './../Sample/img/Vector.png'
-
+import {useSelector} from 'react-redux'
 
 export default function AboutMeScreen() {
+  const nama = useSelector((state)=>state.middle)
+  alert(nama)
   return (
 
     <View>
