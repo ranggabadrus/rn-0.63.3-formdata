@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import * as types from './../constants/actionTypes'
-import {LOGIN_USER_URL} from './../constants/general'
+import {URL,LOGIN_USER_URL} from './../constants/general'
 
 console.log('action 0')
 export const getAuthRequest = () =>({
@@ -20,14 +20,14 @@ export const getAuthFailure = (error) =>({
 
 export const getAuth = (email,password) =>{
     console.log('getNowPlayingAction() :')
-    return async( dispatch ) => {
+    return async(dispatch) => {
         
         try{
             console.log('action request ') 
             dispatch( getAuthRequest() )
-            const response = await Axios.post('https://pacific-oasis-23064.herokuapp.com/user/login',
+            const response = await Axios.post(LOGIN_USER_URL,
                   {
-                    username :email,
+                    email : email,
                     password: password
                   } 
                )    
@@ -36,7 +36,7 @@ export const getAuth = (email,password) =>{
             
             console.log('action success ')
             dispatch(getAuthSuccess(response))
-            console.log('data auth :',response) 
+            console.log('data auth :',response.data) 
             console.log('action success done') 
                       
         }
