@@ -1,36 +1,31 @@
 import Axios from 'axios'
-//import * as types from './../constants/actionTypes'
 import {BASE_URL} from './../Constans'
 
-export const getNowPlayingRequest = () =>({
-  type : types.GET_NOW_PLAYING_REQUEST   
+export const getAuth = () =>({
+  type : 'GET_AUTH',
+  token : userToken   
+
 })
 
-export const getNowPlayingSuccess = (movies) =>({
-    type : types.GET_NOW_PLAYING_SUCCESS,
-    nowPlayingMovies : movies    
+export const getRegister = (movies) =>({
+    type : 'GET_REGISTER'
+         
   })
 
-export const getNowPlayingFailure = (error) =>({
-    type : types.GET_NOW_PLAYING_FAILURE,
-    error  
-
+export const getUserById = (error) =>({
+    type : 'GET_USER_ID',
+    data : userData
 })
 
-export const getNowPlayingAction = () =>{
+export const getUserActions = () =>{
     return async( dispatch ) => {
         
-        try{
-            dispatch( getNowPlayingRequest() )
-            const response = await Axios.get(`${BASE_URL}/now_playing?api_key=${API_KEY}`)    
+            dispatch(getAuth())
             
-            dispatch(getNowPlayingSuccess(response.data.results))
-            //console.log(response.data.results)            
-        }
-
-        catch (error) { dispatch (getNowPlayingFailure(error)) 
-
-        }
+            //dispatch(getRegister())
+          
+            //dispatch(getUserById()) 
+       
     }
 
 
