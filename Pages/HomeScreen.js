@@ -11,26 +11,25 @@ import {useSelector} from 'react-redux'
 
 const HomeScreen = () => {
   const nama = useSelector((state)=>state.first)
-  alert(nama)
+  //alert(nama)
   return (
-    <View style={{margin:0,flex:1}}>
+    <View style={{margin:10,flex:1}}>
         <View style={{flexDirection:'row',justifyContent:'space-around',
-                      margin :5}}>
+                      }}>
             <View>
                 <Image  source={require('../Sample/img/Vector.png')} 
-                style={{width:40,height:40}} />
+                style={{width:30,height:30}} />
             </View>
             <View>
-                <TextInput style={{width:270,height:40,
+                <TextInput style={{width:270,height:30,
                 borderRadius:20
                   
                 }}></TextInput>
             </View>
             <View>
-                <Image  source={menu} style={{width:40,height:40}} />
+                <Image  source={menu} style={{width:30,height:30}} />
             </View>
         </View>
-        <Text> saya</Text>
         
 
 
@@ -42,9 +41,9 @@ const HomeScreen = () => {
            position:'relative',
            top:10,left : 110,
           width:300,height:140}} />
-          <View style={{position:'absolute',top:10}}>
-            <Text style={{color:'white',fontWeight:'bold',fontSize:20}}>Fresh Fruits and Vegetables,</Text>
-            <Text style={{color:'white',fontWeight:'bold',fontSize:20}}>at Your Doorstep</Text>
+          <View style={{position:'absolute',top:10,marginLeft:5}}>
+            <Text style={{color:'white',fontSize:20,fontFamily:'inter'}}>Fresh Fruits and Vegetables,</Text>
+            <Text style={{color:'white',fontSize:20}}>at Your Doorstep</Text>
           </View>
           
         </View>
