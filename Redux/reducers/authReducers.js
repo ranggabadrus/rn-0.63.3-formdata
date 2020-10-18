@@ -1,28 +1,35 @@
-
+import * as types from '../constants/actionTypes'
+console.log('reducer 0')
 const initialState ={
     loading : false,
-    data : [],
+    dataReducer : [],
     error : null
 }
-
+    console.log('reducer 1')        
 function authReducers (state=initialState,action) {
-    switch (type) {
-        case 'GET_AUTH_REQUEST'    :  
-            
+    console.log('reducer 2')
+    switch (action.type) {
+        case types.GET_AUTH_REQUEST :  
+            console.log('reducer request ')
             return Object.assign({}, state, {
                   loading: true,
-
+            
             });
+            
             break;
 
-        case 'GET_AUTH_SUCCESS':  
-            //console.log(action.nowPlayingMovies)
+        case types.GET_AUTH_SUCCESS :  
+        console.log('reducer success')
+           
             return Object.assign({}, state, {
                 loading: false,
-                data : action.dataAction
+                dataReducer : action.dataAuth
             });
+            
             break;
-        case  'GET_AUTH_ERROR' :
+        case types.GET_AUTH_FAILURE :  
+        console.log('reducer failed')
+           
             return Object.assign({}, state, {
                     loading : false,
                     error : action.error
@@ -35,3 +42,8 @@ function authReducers (state=initialState,action) {
     }
 
     export default authReducers
+
+
+
+
+

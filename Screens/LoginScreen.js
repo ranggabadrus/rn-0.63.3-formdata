@@ -1,14 +1,24 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState,useEffect } from 'react';
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Alert } from 'react-native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
-import Axios from 'axios';
-import AsyncStorage from '@react-native-community/async-storage';
-
+//import Axios from 'axios';
+//import AsyncStorage from '@react-native-community/async-storage';
+import {useDispatch,useSelector} from 'react-redux'
+import {getAuth} from './../Redux/actions/authActions'
 
 const LoginScreen = ({ navigation }) => {
-
-
+  const dispatch= useDispatch()
+  useEffect(() =>{
+    console.log('login')  
+    dispatch(getAuth('saya@gmail.com','saya'))
+  },[])
+  
+  
+  const test = useSelector((state)=>state)
+  console.log('hasil : ',test)
+  
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "android" ? "padding" : "height"}

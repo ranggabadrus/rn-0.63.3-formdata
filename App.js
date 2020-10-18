@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Screens/SplashScreen';
 import { View, Text ,Button} from 'react-native'
 import {Provider} from 'react-redux'
-import store from './Redux/Store'
+import store from './Redux/store.js'
 
 
 const  TestingScreen = (props) => {
