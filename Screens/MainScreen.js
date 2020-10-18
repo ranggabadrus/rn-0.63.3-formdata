@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AboutMeScreen from '../Pages/AboutMeScreen';
 import HomeScreen from '../Pages/HomeScreen'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import EditProfileScreen from './EditProfileScreen';
+//import EditProfileScreen from './EditProfileScreen';
 
 const Tab = createBottomTabNavigator();
 const MainScreen = () => {

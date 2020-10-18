@@ -8,6 +8,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Screens/SplashScreen';
 import { View, Text ,Button} from 'react-native'
+import {Provider} from 'react-redux'
+import store from './Redux/Store'
 
 
 const  TestingScreen = (props) => {
@@ -26,7 +28,7 @@ const  TestingScreen = (props) => {
     />
    
     <Button
-      title='Main Screen'
+      title='Main'
       onPress={() => props.navigation.navigate('Main')}
     />
     
@@ -40,10 +42,10 @@ const  TestingScreen = (props) => {
       onPress={() => props.navigation.navigate('Register')}
     />
     
-     {/* <Button
-      title='About me'
-      onPress={() => props.navigation.navigate('About me')}
-    />  */}
+    {/* <Button
+      title='Home Screen'
+      onPress={() => props.navigation.navigate('Home')}
+    /> */}
     <Button
       title='Edit Profile'
       onPress={() => props.navigation.navigate('EditProfile')}
@@ -90,8 +92,11 @@ const RootStackScreen = ({ navigation }) => (
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <RootStackScreen />
-    </NavigationContainer>
+    <Provider store={store} >
+            <NavigationContainer>
+                <RootStackScreen />
+            </NavigationContainer>
+
+    </Provider>
   );
 }

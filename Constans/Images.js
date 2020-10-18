@@ -1,0 +1,1 @@
+export const menuImage = '../Sample/img/Vector.png'
