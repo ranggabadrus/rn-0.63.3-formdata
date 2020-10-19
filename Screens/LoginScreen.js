@@ -20,8 +20,10 @@ const LoginScreen = (props) => {
    
   }
   
-  const test = useSelector((state)=>state)
-  //console.log('hasil : ',test)
+  const token = useSelector((state)=>state.authReducers.dataReducer.data.token)
+  //const token = test
+  //console.log('state : ',test)
+  console.log('token :  : ',token)
   
   
   return (
@@ -63,7 +65,7 @@ const LoginScreen = (props) => {
                   <TouchableOpacity
                     style={styles.buttonLogin}
                     onPress={() =>{ 
-                          alert(email+password)
+                          //alert(email+password)
                           handleOnLogin()
                           props.navigation.navigate('Main')}} >
                     <Text style={styles.txtSignin}>Sign In</Text>
