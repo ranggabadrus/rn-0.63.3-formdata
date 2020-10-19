@@ -7,16 +7,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {useDispatch,useSelector} from 'react-redux'
 import {getAuth} from './../Redux/actions/authActions'
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = (props) => {
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
   const dispatch= useDispatch()
-  useEffect(() =>{
-    console.log('login')  
-    dispatch(getAuth('saya@gmail.com','saya'))
-  },[])
   
+  
+  
+  const handleOnLogin =() => {
+      console.log('press login')  
+      dispatch(getAuth(email,password))
+   
+  }
   
   const test = useSelector((state)=>state)
-  console.log('hasil : ',test)
+  //console.log('hasil : ',test)
   
   
   return (
@@ -44,20 +49,30 @@ const LoginScreen = ({ navigation }) => {
                 <View style={{ backgroundColor: 'white', padding: 20, width: '90%', alignSelf: 'center' }}>
                   <Text style={styles.headerSignIn}>Sign In</Text>
                   <Text style={styles.fillText}>Email</Text>
-                  <TextInput style={styles.txtInput} />
+                  <TextInput
+                      value= {email}
+                      onChangeText ={(email)=>setEmail(email)}
+                      style={styles.txtInput} />
+                  
                   <Text style={styles.fillText}>Password</Text>
-                  <TextInput style={styles.txtInput} secureTextEntry={true} />
+                  <TextInput 
+                        value= {password}
+                        onChangeText ={(password)=>setPassword(password)}
+                        style={styles.txtInput} secureTextEntry={true} />
 
                   <TouchableOpacity
                     style={styles.buttonLogin}
-                    onPress={() => navigation.navigate('MainScreen')} >
+                    onPress={() =>{ 
+                          alert(email+password)
+                          handleOnLogin()
+                          props.navigation.navigate('Main')}} >
                     <Text style={styles.txtSignin}>Sign In</Text>
                   </TouchableOpacity>
 
                   <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
                     <Text>Don't have an account?</Text>
                     <TouchableOpacity
-                      onPress={() => navigation.navigate('RegisterScreen')}>
+                      onPress={() => props.navigation.navigate('RegisterScreen')}>
                       <Text style={{ color: '#4f6e65' }}> Sign Up</Text>
                     </TouchableOpacity>
                   </View>
