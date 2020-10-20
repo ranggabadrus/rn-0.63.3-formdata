@@ -2,11 +2,10 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import AboutMeScreen from '../pages/AboutMeScreen';
-import HomeScreen from '../pages/HomeScreen'
-import EditProfileScreen from '../pages/EditProfileScreen'
+import AboutMeScreen from '../Pages/AboutMeScreen';
+import HomeScreen from '../Pages/HomeScreen'
 import Icon from 'react-native-vector-icons/FontAwesome';
-//import EditProfileScreen from './EditProfileScreen';
+import EditProfileScreen from '../pages/EditProfileScreen';
 
 const Tab = createBottomTabNavigator();
 const MainScreen = () => {
@@ -19,7 +18,7 @@ const MainScreen = () => {
 
           if (route.name === 'Home') {
             iconName = focused ? 'home': 'home';
-          } else if (route.name === 'Profile') {
+          } else if (route.name === 'EditProfile') {
             iconName = focused ? 'user-circle' : 'user-circle';
           }
 
@@ -32,7 +31,6 @@ const MainScreen = () => {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Profile" component={EditProfileScreen} />
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="About me" component={AboutMeScreen} />
     </Tab.Navigator>
