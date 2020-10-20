@@ -1,8 +1,37 @@
-import React from 'react'
+import Axios from 'axios'
+import React,{ useEffect,useState } from 'react'
 import { View, Text, ImageBackground, Image, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import {useSelector,useDispatch} from 'react-redux'
+import { getUserId } from '../Redux/actions/UserIdActions'
+import {GET_USER_URL} from '../Redux/constants/general'
 
-export default function EditProfileScreen() {
+
+export default function EditProfileScreen(props) {
+  const [data,setData]  =useState([])
+  
+  
+  
+  const dispatch = useDispatch()
+  const token = useSelector((state)=>state.UserAuthReducers.token) 
+  console.log('token :',token)
+  useEffect( ()=> { 
+     getDataUser(token,GET_USER_URL)
+        
+  }, [])
+  
+  const getDataUser = (key,url) =>{
+            Axios.get(url,{
+              headers : { token : key}
+            })
+          .then(r=> setData(r.data) )
+   }
+  
+  console.log('data :' ,data)
+  
+  
+  
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "android" ? "padding" : "height"}
@@ -18,7 +47,7 @@ export default function EditProfileScreen() {
           </View>
 
           <View>
-            <Text>   </Text>
+            <Text></Text>
           </View>
           <View style={{ backgroundColor: '#FFFFFF', padding: 20 }}>
             <View style={{ alignItems: 'center' }}>
@@ -30,9 +59,13 @@ export default function EditProfileScreen() {
 
             <View >
               <Text>Full Name</Text>
-              <TextInput style={styles.txtInput} />
+              <TextInput 
+                   value={data.length!==0 && data.data.full_name}
+                  style={styles.txtInput} />
               <Text>Email</Text>
-              <TextInput style={styles.txtInput} />
+              <TextInput 
+                  value ={ data.length!==0 && data.data.email }
+                style={styles.txtInput} />
               <Text>Description</Text>
               <TextInput style={styles.txtInput2} />
             </View>

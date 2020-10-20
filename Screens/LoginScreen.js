@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import AsyncStorage from '@react-native-community/async-storage';
 import {useDispatch,useSelector} from 'react-redux'
 import {getUserAuth} from '../Redux/actions/UserAuthActions'
+  
 
 const LoginScreen = (props) => {
   const [email,setEmail] = useState('')
@@ -15,19 +16,19 @@ const LoginScreen = (props) => {
   
   
   useEffect(() => {
-    dispatch(getUserAuth(email,password).then((e)=>{console.log('hai',e)}) )
-       
+    dispatch(getUserAuth(email,password) )
     
   }, [])
   
   
-  const handleOnLogin =() => {
+  const handleOnLogin =(token) => {
     console.log('press login')  
     dispatch(getUserAuth(email,password))
-    props.navigation.navigate('Main') 
+    .then((r)=>{ r ? props.navigation.navigate('Main'):
+    props.navigation.navigate('Login')                         })
   }
   
-  const token = useSelector((state)=>state.UserAuthReducers.token) 
+  
    
   
   
@@ -79,7 +80,7 @@ const LoginScreen = (props) => {
                   <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
                     <Text>Don't have an account?</Text>
                     <TouchableOpacity
-                      onPress={() => props.navigation.navigate('RegisterScreen')}>
+                      onPress={() => props.navigation.navigate('Register')}>
                       <Text style={{ color: '#4f6e65' }}> Sign Up</Text>
                     </TouchableOpacity>
                   </View>

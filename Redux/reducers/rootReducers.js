@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux'
 import UserAuthReducers from './UserAuthReducers'
 import UserRegisterReducers from './UserRegisterReducers'
-//import {testReducer} from './../screens/UserReviewScreen'
-
+import UserIdReducers from './UserIdReducer'
 
 const rootReducers  = combineReducers
-({UserAuthReducers,UserRegisterReducers})
+({UserAuthReducers,UserRegisterReducers,UserIdReducers})
 console.log('root reducer')
 
 export default rootReducers

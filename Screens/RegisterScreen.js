@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Button, handleSubmit, ImageBackground } from 'react-native';
 import 'react-native-gesture-handler';
 import {useDispatch,useSelector} from 'react-redux'
-import { getUserRegister } from '../Redux/actions/UserRegisterActions';
+import  {getUserRegister}  from '../Redux/actions/UserRegisterActions';
 
 
 const RegisterScreen = (props) => {
@@ -12,20 +12,22 @@ const RegisterScreen = (props) => {
   const dispatch= useDispatch()
 
   useEffect(() => {
-     handleOnSignup()  
+     handleOnSignUp()  
   }, []) 
   
   
-  const handleOnSignup  =  () => {
+  const handleOnSignUp  =  () => {
       dispatch(getUserRegister(full_name,email,Password))
   }
+  // <KeyboardAvoidingView
+  // behavior={Platform.OS == "android" ? "padding" : "height"}
+  // style={styles.container}>
+  // {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+        // {/* </TouchableWithoutFeedback> */}
+        // </KeyboardAvoidingView>
 
   
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == "android" ? "padding" : "height"}
-      style={styles.container}>
-      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
         <View>
 
           <ImageBackground style={{ backgroundColor: 'white' }}>
@@ -68,11 +70,9 @@ const RegisterScreen = (props) => {
                   <TextInput style={styles.txtInput} secureTextEntry={true} />
 
                   <TouchableOpacity
-                      onPress = {  () =>{
-                              handleOnSignup
-                              alert('suskes sign up')
-                              props.navigation.navigate('Main')
-                          }}
+                      onPress = {handleOnSignUp}
+                            
+                            
                       style={styles.buttonLogin}>
                      <Text style={styles.txtSignin}>Sign Up</Text>
                   </TouchableOpacity>
@@ -96,8 +96,6 @@ const RegisterScreen = (props) => {
             </ImageBackground>
           </ImageBackground>
         </View>
-      {/* </TouchableWithoutFeedback> */}
-    </KeyboardAvoidingView>
   )
 }
 

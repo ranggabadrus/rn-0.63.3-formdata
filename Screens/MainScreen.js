@@ -33,9 +33,8 @@ const MainScreen = () => {
         inactiveTintColor: 'gray',
       }}
     >
-      
-      <Tab.Screen name="Profile" component={EditProfileScreen} />
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Profile" component={EditProfileScreen} />
       <Tab.Screen name="About me" component={AboutMeScreen} />
     
     </Tab.Navigator>
