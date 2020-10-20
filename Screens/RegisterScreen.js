@@ -1,15 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Text, View, Image, TextInput, StyleSheet, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Button, handleSubmit, ImageBackground } from 'react-native';
 import 'react-native-gesture-handler';
+import {useDispatch,useSelector} from 'react-redux'
+import { getUserRegister } from '../Redux/actions/UserRegisterActions';
 
-const RegisterScreen = ({ navigation }) => {
 
+const RegisterScreen = (props) => {
+  const[full_name,setFull_Name] =useState(null)
+  const[email,setEmail] =useState(null)
+  const[Password,setPassword] =useState(null)
+  const dispatch= useDispatch()
 
+  useEffect(() => {
+     handleOnSignup()  
+  }, []) 
+  
+  
+  const handleOnSignup  =  () => {
+      dispatch(getUserRegister(full_name,email,Password))
+  }
+
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "android" ? "padding" : "height"}
       style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
         <View>
 
           <ImageBackground style={{ backgroundColor: 'white' }}>
@@ -29,24 +45,42 @@ const RegisterScreen = ({ navigation }) => {
 
                 <View style={{ backgroundColor: 'white', padding: 10, width: '90%', alignSelf: 'center' }}>
                   <Text style={styles.headerSignIn}>Sign Up</Text>
-                  <Text style={styles.fillText}>Fullname</Text>
-                  <TextInput style={styles.txtInput} />
+                  
+                  <Text style={styles.fillText}>Full Name</Text>
+                  <TextInput
+                          value ={full_name}
+                          onChangeText ={(full_name)=>setFull_Name(full_name)}
+                          style={styles.txtInput} />
+                  
                   <Text style={styles.fillText}>Email</Text>
-                  <TextInput style={styles.txtInput} />
+                  <TextInput 
+                          value= {email}
+                          onChangeText ={(email)=>setEmail(email)}
+                          style={styles.txtInput} />
+                  
                   <Text style={styles.fillText}>Password</Text>
-                  <TextInput style={styles.txtInput} secureTextEntry={true} />
+                  <TextInput 
+                          value={Password}
+                          onChangeText ={(Password)=>setPassword(Password)}
+                          style={styles.txtInput} secureTextEntry={true} />
+                  
                   <Text style={styles.fillText}>Confirm Password</Text>
                   <TextInput style={styles.txtInput} secureTextEntry={true} />
 
                   <TouchableOpacity
-                    style={styles.buttonLogin}>
-                    <Text style={styles.txtSignin}>Sign Up</Text>
+                      onPress = {  () =>{
+                              handleOnSignup
+                              alert('suskes sign up')
+                              props.navigation.navigate('Main')
+                          }}
+                      style={styles.buttonLogin}>
+                     <Text style={styles.txtSignin}>Sign Up</Text>
                   </TouchableOpacity>
 
                   <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
                     <Text>Already have an account?</Text>
                     <TouchableOpacity
-                      onPress={() => navigation.navigate('LoginScreen')}>
+                      onPress={() => props.navigation.navigate('LoginScreen')}>
                       <Text style={{ color: '#4f6e65' }}> Sign In</Text>
                     </TouchableOpacity>
                   </View>
@@ -62,7 +96,7 @@ const RegisterScreen = ({ navigation }) => {
             </ImageBackground>
           </ImageBackground>
         </View>
-      </TouchableWithoutFeedback>
+      {/* </TouchableWithoutFeedback> */}
     </KeyboardAvoidingView>
   )
 }
