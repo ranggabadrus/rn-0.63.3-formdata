@@ -5,32 +5,40 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import Axios from 'axios';
 //import AsyncStorage from '@react-native-community/async-storage';
 import {useDispatch,useSelector} from 'react-redux'
-import {getAuth} from './../Redux/actions/authActions'
+import {getUserAuth} from '../Redux/actions/UserAuthActions'
 
 const LoginScreen = (props) => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+  const [token,setToken] = useState([])
   const dispatch= useDispatch()
   
   
+  useEffect(() => {
+    dispatch(getUserAuth(email,password))    
+    
+  }, [])
+  
   
   const handleOnLogin =() => {
-      console.log('press login')  
-      dispatch(getAuth(email,password))
-   
-  }
+    console.log('press login')  
+    dispatch(getUserAuth(email,password))
+   }
   
-  const token = useSelector((state)=>state.authReducers.dataReducer.data.token)
+   //const token = useSelector((state)=>state.UserAuthReducers.dataReducer.data.token)
+  //setToken(token)    
+  //const token = useSelector((state)=>state.UserAuthReducers.dataReducer.data.token)
+     
   //const token = test
-  //console.log('state : ',test)
-  console.log('token :  : ',token)
+  //console.log('state : ',state)
+  
   
   
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == "android" ? "padding" : "height"}
-      style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+  //  <KeyboardAvoidingView
+  //     behavior={Platform.OS == "android" ? "padding" : "height"}
+  //     style={styles.container}>
+      //<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
 
           <ImageBackground style={styles.imageBackground1}>
@@ -92,8 +100,8 @@ const LoginScreen = (props) => {
             </ImageBackground>
           </ImageBackground>
         </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+     // </TouchableWithoutFeedback>
+    // </KeyboardAvoidingView>
 
   )
 }

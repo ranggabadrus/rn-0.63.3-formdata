@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import authReducers from '../reducers/authReducers'
+import UserAuthReducers from './UserAuthReducers'
 //import {testReducer} from './../screens/UserReviewScreen'
 
 
-const rootReducers  = combineReducers({authReducers})
+const rootReducers  = combineReducers({UserAuthReducers})
 console.log('root reducer')
 
 export default rootReducers

@@ -6,10 +6,10 @@ const initialState ={
     error : null
 }
     console.log('reducer 1')        
-function authReducers (state=initialState,action) {
+function UserAuthReducers (state=initialState,action) {
     console.log('reducer 2')
     switch (action.type) {
-        case types.GET_AUTH_REQUEST :  
+        case types.GET_REQUEST:  
             console.log('reducer request ')
             return Object.assign({}, state, {
                   loading: true,
@@ -18,16 +18,16 @@ function authReducers (state=initialState,action) {
             
             break;
 
-        case types.GET_AUTH_SUCCESS :  
+        case types.GET_SUCCESS :  
         console.log('reducer success')
            
             return Object.assign({}, state, {
                 loading: false,
-                dataReducer : action.dataAuth
+                dataReducer : action.dataAction
             });
             
             break;
-        case types.GET_AUTH_FAILURE :  
+        case types.GET_FAILURE :  
         console.log('reducer failed')
            
             return Object.assign({}, state, {
@@ -41,7 +41,7 @@ function authReducers (state=initialState,action) {
         } 
     }
 
-    export default authReducers
+    export default UserAuthReducers
 
 
 
