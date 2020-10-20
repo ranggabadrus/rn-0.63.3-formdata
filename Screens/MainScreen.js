@@ -18,7 +18,7 @@ const MainScreen = () => {
 
           if (route.name === 'Home') {
             iconName = focused ? 'home': 'home';
-          } else if (route.name === 'EditProfile') {
+          } else if (route.name === 'Profile') {
             iconName = focused ? 'user-circle' : 'user-circle';
           }
 
@@ -31,8 +31,11 @@ const MainScreen = () => {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      
+      <Tab.Screen name="Profile" component={EditProfileScreen} />
+       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="About me" component={AboutMeScreen} />
+    
     </Tab.Navigator>
 
   );
