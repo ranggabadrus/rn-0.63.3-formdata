@@ -80,7 +80,7 @@ const RegisterScreen = (props) => {
                   <View style={{ alignSelf: 'center', flexDirection: 'row' }} >
                     <Text>Already have an account?</Text>
                     <TouchableOpacity
-                      onPress={() => props.navigation.navigate('LoginScreen')}>
+                      onPress={() => props.navigation.navigate('Login')}>
                       <Text style={{ color: '#4f6e65' }}> Sign In</Text>
                     </TouchableOpacity>
                   </View>

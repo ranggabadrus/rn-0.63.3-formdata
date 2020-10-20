@@ -79,7 +79,7 @@ const Stack = createStackNavigator();
 
 
 const RootStackScreen = ({ navigation }) => (
-  <Stack.Navigator headerMode='none'>
+  <Stack.Navigator headerMode='none' initialRouteName ='Login'>
     <Stack.Screen name="Testing" component={TestingScreen} />
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Main" component={MainScreen} />
