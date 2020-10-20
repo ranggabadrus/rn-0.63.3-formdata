@@ -5,8 +5,8 @@ import rootReducers from  '../Redux/reducers/rootReducers'
 
 
 
-const store = createStore (rootReducers,composeWithDevTools(applyMiddleware(thunkMiddleware)))
-//const store = createStore(rootReducers)
+const store = createStore(rootReducers,composeWithDevTools(applyMiddleware(thunkMiddleware)))
+//const store = createStore()
 console.log('store')
 
 export default store

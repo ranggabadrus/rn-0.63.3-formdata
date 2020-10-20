@@ -27,8 +27,8 @@ export const getUserAuth = (email,password) =>{
             dispatch( getRequest() )
             const response = await Axios.post(LOGIN_USER_URL,
                   {
-                    email : email,
-                    password: password
+                    email,
+                    password
                   } 
                )    
             console.log('action request done')
@@ -38,11 +38,12 @@ export const getUserAuth = (email,password) =>{
             dispatch(getSuccess(response))
             console.log('data Action :',response.data.token) 
             console.log('action success done') 
-                      
+            return true                    
         }
 
         catch (error) { dispatch (getFailure(error)) 
             console.log('action failed') 
+            return false
         }
     }
 

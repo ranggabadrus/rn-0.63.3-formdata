@@ -10,12 +10,13 @@ import {getUserAuth} from '../Redux/actions/UserAuthActions'
 const LoginScreen = (props) => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-  //const [token,setToken] = useState([])
+  
   const dispatch= useDispatch()
   
   
   useEffect(() => {
-    dispatch(getUserAuth(email,password))    
+    dispatch(getUserAuth(email,password).then((e)=>{console.log('hai',e)}) )
+       
     
   }, [])
   
@@ -23,15 +24,11 @@ const LoginScreen = (props) => {
   const handleOnLogin =() => {
     console.log('press login')  
     dispatch(getUserAuth(email,password))
-   }
+    props.navigation.navigate('Main') 
+  }
   
-   //const token = useSelector((state)=>state.UserAuthReducers.dataReducer.data.token)
-  //setToken(token)    
-  //const token = useSelector((state)=>state.UserAuthReducers.dataReducer.data.token)
-     
-  //const token = test
-  //console.log('state : ',state)
-  
+  const token = useSelector((state)=>state.UserAuthReducers.token) 
+   
   
   
   return (
@@ -75,7 +72,7 @@ const LoginScreen = (props) => {
                     onPress={() =>{ 
                           //alert(email+password)
                           handleOnLogin()
-                          props.navigation.navigate('Main')}} >
+                          }} >
                     <Text style={styles.txtSignin}>Sign In</Text>
                   </TouchableOpacity>
 

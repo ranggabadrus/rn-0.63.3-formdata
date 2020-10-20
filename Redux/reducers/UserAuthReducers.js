@@ -2,8 +2,8 @@ import * as types from '../constants/actionTypes'
 console.log('reducer 0')
 const initialState ={
     loading : false,
-    dataReducer : [],
-    error : null
+    error : null,
+    token : null
 }
     console.log('reducer 1')        
 function UserAuthReducers (state=initialState,action) {
@@ -23,7 +23,7 @@ function UserAuthReducers (state=initialState,action) {
            
             return Object.assign({}, state, {
                 loading: false,
-                dataReducer : action.dataAction
+                token: action.dataAction.data.token
             });
             
             break;
