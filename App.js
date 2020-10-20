@@ -46,10 +46,10 @@ const  TestingScreen = (props) => {
       title='Home Screen'
       onPress={() => props.navigation.navigate('Home')}
     /> */}
-    <Button
+    {/* <Button
       title='Edit Profile'
       onPress={() => props.navigation.navigate('EditProfile')}
-    />
+    /> */}
     {/* <Button
       title='User Review'
       onPress={() => props.navigation.navigate('User Review')}
@@ -85,7 +85,7 @@ const RootStackScreen = ({ navigation }) => (
     <Stack.Screen name="Main" component={MainScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
-    <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+    {/* <Stack.Screen name="EditProfile" component={EditProfileScreen} /> */}
 
   </Stack.Navigator>
 );
