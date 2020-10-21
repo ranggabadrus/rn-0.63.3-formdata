@@ -7,6 +7,6 @@ import rootReducers from  '../Redux/reducers/rootReducers'
 
 const store = createStore(rootReducers,composeWithDevTools(applyMiddleware(thunkMiddleware)))
 //const store = createStore()
-console.log('store')
+console.log('toko : ','store')
 
 export default store

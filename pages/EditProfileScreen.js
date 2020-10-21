@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import {useSelector,useDispatch} from 'react-redux'
 import { getUserId } from '../Redux/actions/UserIdActions'
 import {GET_USER_URL} from '../Redux/constants/general'
+//import {getDataUser} from '../Redux/constants/general'
 
 
 export default function EditProfileScreen(props) {
@@ -25,7 +26,7 @@ export default function EditProfileScreen(props) {
               headers : { token : key}
             })
           .then(r=> setData(r.data) )
-   }
+  }
   
   console.log('data :' ,data)
   
@@ -40,18 +41,25 @@ export default function EditProfileScreen(props) {
         <ImageBackground style={{ width: '100%', height: '100%', backgroundColor: '#F7F6ED' }}>
           <View style={{ backgroundColor: '#FFFFFF', flexDirection: 'row', height: '5%' }}>
             <Image source={require('../Sample/img/Vector.png')} style={{ marginLeft: 5, height: 25, width: 30 }} />
+            
             <Text style={{ marginLeft: 110, fontSize: 18 }}>Edit Profile</Text>
+           
+           
             <TouchableOpacity>
-              <Image source={require('../Sample/img/menu.png')} style={{ marginLeft: 90, height: 20, width: 20 }} />
+                <Image source={require('../Sample/img/menu.png')} style={{ marginLeft: 90, height: 20, width: 20 }} />
             </TouchableOpacity>
           </View>
 
           <View>
-            <Text></Text>
+            {/* <Text>{ data.length!==0 && data.data.profile_image}</Text> */}
+            <Text>{} </Text>
           </View>
           <View style={{ backgroundColor: '#FFFFFF', padding: 20 }}>
             <View style={{ alignItems: 'center' }}>
-              <Image source={require('../Sample/img/userimage.png')} style={styles.userImage} />
+            {  data.length!==0 ?  
+                <Image source={{uri:data.data.profile_image}} style={styles.userImage}  />  :
+                <Image source={require('../Sample/img/userimage.png')} style={styles.userImage} />}
+            
               <TouchableOpacity>
                 <Text style={styles.toProfile}>UPLOAD IMAGE</Text>
               </TouchableOpacity>

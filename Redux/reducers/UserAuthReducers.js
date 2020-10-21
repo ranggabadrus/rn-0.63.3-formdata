@@ -1,16 +1,16 @@
 import * as types from '../constants/actionTypes'
-console.log('reducer 0')
+console.log('reducer 0 auth')
 const initialState ={
     loading : false,
     error : null,
     token : null
 }
-    console.log('reducer 1')        
+    console.log('reducer 1 auth')        
 function UserAuthReducers (state=initialState,action) {
-    console.log('reducer 2')
+    console.log('reducer 2 auth')
     switch (action.type) {
         case types.GET_REQUEST:  
-            console.log('reducer request ')
+            console.log('reducer request auth ')
             return Object.assign({}, state, {
                   loading: true,
             
@@ -19,7 +19,7 @@ function UserAuthReducers (state=initialState,action) {
             break;
 
         case types.GET_SUCCESS :  
-        console.log('reducer success')
+        console.log('reducer success auth')
            
             return Object.assign({}, state, {
                 loading: false,
@@ -28,7 +28,7 @@ function UserAuthReducers (state=initialState,action) {
             
             break;
         case types.GET_FAILURE :  
-        console.log('reducer failed')
+        console.log('reducer failed auth')
            
             return Object.assign({}, state, {
                     loading : false,

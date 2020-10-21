@@ -4,7 +4,7 @@ import UserRegisterReducers from './UserRegisterReducers'
 import UserIdReducers from './UserIdReducer'
 
 const rootReducers  = combineReducers
-({UserAuthReducers,UserRegisterReducers,UserIdReducers})
+({UserAuthReducers,UserRegisterReducers})
 console.log('root reducer')
 
 export default rootReducers
