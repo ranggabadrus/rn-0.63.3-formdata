@@ -13,6 +13,7 @@ import MyProductScreen from './Screens/MyProductScreen';
 import { View, Text ,Button} from 'react-native'
 import {Provider} from 'react-redux'
 import store from './Redux/store.js'
+import ListProductComponent from './Components/ListProductComponent';
 
 
 const TestingScreen = (props) => {
@@ -45,14 +46,14 @@ const TestingScreen = (props) => {
       onPress={() => props.navigation.navigate('Register')}
     />
     
-    {/* <Button
-      title='Home Screen'
-      onPress={() => props.navigation.navigate('Home')}
-    /> */}
-    {/* <Button
-      title='Edit Profile'
-      onPress={() => props.navigation.navigate('EditProfile')}
-    /> */}
+    <Button
+      title='Product'
+      onPress={() => props.navigation.navigate('Product')}
+    /> 
+     <Button
+      title='Detail Product'
+      onPress={() => props.navigation.navigate('DetailProduct')}
+    />
     {/* <Button
       title='User Review'
       onPress={() => props.navigation.navigate('User Review')}
@@ -82,15 +83,16 @@ const Stack = createStackNavigator();
 
 
 const RootStackScreen = ({ navigation }) => (
-  <Stack.Navigator headerMode='none' initialRouteName ='Login'>
-    <Stack.Screen name="Testing" component={TestingScreen} />
+  <Stack.Navigator headerMode='none' initialRouteName ='Test'>
+    <Stack.Screen name="Test" component={TestingScreen} />
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Main" component={MainScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
-    <Stack.Screen name="Create Product" component={CreateProductScreen} />
+    <Stack.Screen name="Product" component={CreateProductScreen} />
     <Stack.Screen name="EditProfile" component={EditProfileScreen} />
-    <Stack.Screen name="MyProduct" component={MyProductScreen} />
+    <Stack.Screen name="DetailProduct" component={MyProductScreen} />
+    <Stack.Screen name="ListProduct" component={ListProductComponent} />
 
   </Stack.Navigator>
 );

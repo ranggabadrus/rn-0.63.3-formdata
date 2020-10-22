@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { set, stopClock } from 'react-native-reanimated'
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground'
+import {CREATE_PRODUCTS_URL} from "../Redux/constants/general";
+import {useSelector} from 'react-redux';
+import Axios from 'axios'
 
 export default function CreateProductScreen(props) {
+    const [product_name,setProduct_Name] = useState(null)
+    const [category,setCategory] = useState(null)
+    const [price,setPrice] = useState(null)
+    const [stock,setStock] = useState(null)
+    const [product_image,setProduct_Image] = useState('https://placeimg.com/640/480/nature')
+    const [description,setDescription] = useState(null)
+    const [discount,setDiscount] = useState(10)
+    const [weight,setWeight] = useState(10)
+    
+    const token = useSelector((state)=>state.UserAuthReducers.token) 
+
+    console.log(token)
+    const handleOnCreate  =() =>{
+        Axios.post(CREATE_PRODUCTS_URL,{
+            headers : { token : token },
+            data : { product_name,
+                    category,
+                    description,
+                    price,
+                    stock,
+                    discount,
+                    weight,
+                    product_image
+                  }
+        })
+    }    
+    
+    //console.log()
+    
     return (
 
         <ImageBackground style={{ width: '100%', height: '100%', backgroundColor: '#F7F6ED' }}>
@@ -27,17 +60,37 @@ export default function CreateProductScreen(props) {
 
                 <View style={{ height: '61%', marginTop: '2%' }} >
                     <Text style={{ marginLeft: '5%' }}>Product Name</Text>
-                    <TextInput style={styles.txtInput} />
+                    <TextInput 
+                        value = {product_name}
+                        onChangeText ={product_name=>setProduct_Name(product_name)}   
+                        style={styles.txtInput} />
+                   
                     <Text style={{ marginLeft: '5%' }}>Description</Text>
-                    <TextInput style={styles.txtInput} />
+                    <TextInput 
+                        value = {description}
+                        onChangeText ={description=>setDescription(description)}   
+                        style={styles.txtInput} />
+                    
                     <Text style={{ marginLeft: '5%' }}>Category</Text>
-                    <TextInput style={styles.txtInput} />
+                    <TextInput 
+                        value = {category}
+                        onChangeText ={category=>setCategory(category)}   
+                        style={styles.txtInput} />
+                    
                     <Text style={{ marginLeft: '5%' }}>Price</Text>
-                    <TextInput style={styles.txtInput} />
+                    <TextInput 
+                        value = {price}
+                        onChangeText ={price=>setPrice(price)}   
+                        style={styles.txtInput} />
+                    
                     <Text style={{ marginLeft: '5%' }}>Stock</Text>
-                    <TextInput style={styles.txtInput} />
+                    <TextInput 
+                        value = {stock}
+                        onChangeText ={stock=>setStock(stock)}   
+                        style={styles.txtInput} />
 
                     <TouchableOpacity
+                        onPress ={handleOnCreate}
                         style={styles.buttonSave}>
                         <Text style={{ textAlign: 'center', color: 'white' }}>Create</Text>
                     </TouchableOpacity>

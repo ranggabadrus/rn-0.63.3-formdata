@@ -24,7 +24,7 @@ const LoginScreen = (props) => {
   const handleOnLogin =(token) => {
     console.log('press login')  
     dispatch(getUserAuth(email,password))
-    .then((r)=>{ r ? props.navigation.navigate('Main'):
+    .then((r)=>{ r ? props.navigation.navigate('DetailProduct'):
     props.navigation.navigate('Login')                         })
   }
   

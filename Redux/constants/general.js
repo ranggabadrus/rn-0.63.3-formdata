@@ -8,3 +8,6 @@ export const REGISTER_USER_URL='https://pacific-oasis-23064.herokuapp.com/user/r
 export const GET_USER_URL='https://pacific-oasis-23064.herokuapp.com/user/id'
 export const EDIT_USER_URL='https://pacific-oasis-23064.herokuapp.com/user/edit'
 export const DELETE_USER_URL='https://pacific-oasis-23064.herokuapp.com/user/delete'
+
+export const GET_PRODUCTS_URL='https://pacific-oasis-23064.herokuapp.com/products'
+export const CREATE_PRODUCTS_URL='https://pacific-oasis-23064.herokuapp.com/products'

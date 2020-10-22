@@ -27,9 +27,9 @@ export const getUserRegister = (full_name,email,password) =>{
             dispatch( getRequest() )
             const response = await Axios.post(REGISTER_USER_URL,
                   {
-                    full_name : full_name, 
-                    email: email ,
-                    password : password
+                    full_name, 
+                    email ,
+                    password
                   } 
                )    
             console.log('action request register done ')
