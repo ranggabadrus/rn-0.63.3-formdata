@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import AboutMeScreen from '../pages/AboutMeScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import EditProfileScreen from '../pages/EditProfileScreen';
+import EditProfileScreen from './EditProfileScreen';
 import HomeScreen from '../pages/HomeScreen'
 
 
@@ -34,7 +34,7 @@ const MainScreen = () => {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={EditProfileScreen} />
+      {/* <Tab.Screen name="Profile" component={EditProfileScreen} /> */}
       <Tab.Screen name="About me" component={AboutMeScreen} />
     
     </Tab.Navigator>

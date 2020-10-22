@@ -7,12 +7,15 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Screens/SplashScreen';
+import CreateProductScreen from './Screens/CreateProductScreen'
+import EditProfileScreen from './Screens/EditProfileScreen'
+import MyProductScreen from './Screens/MyProductScreen';
 import { View, Text ,Button} from 'react-native'
 import {Provider} from 'react-redux'
 import store from './Redux/store.js'
 
 
-const  TestingScreen = (props) => {
+const TestingScreen = (props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <Text>Testing !</Text>
@@ -85,7 +88,9 @@ const RootStackScreen = ({ navigation }) => (
     <Stack.Screen name="Main" component={MainScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
-    {/* <Stack.Screen name="EditProfile" component={EditProfileScreen} /> */}
+    <Stack.Screen name="Create Product" component={CreateProductScreen} />
+    <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+    <Stack.Screen name="MyProduct" component={MyProductScreen} />
 
   </Stack.Navigator>
 );

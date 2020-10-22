@@ -5,7 +5,7 @@ import back from './../Sample/img/back.png'
 import Vector from './../Sample/img/Vector.png'
 import {useSelector} from 'react-redux'
 
-export default function AboutMeScreen() {
+export default function AboutMeScreen(props) {
   //const nama = useSelector((state)=>state.middle)
   //alert(nama)
   return (
@@ -32,7 +32,9 @@ export default function AboutMeScreen() {
       <View style={styles.divider} />
 
       <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity style={{ marginBottom: 6 }}>
+        <TouchableOpacity 
+        onPress={() => props.navigation.navigate('MyProduct')}
+        style={{ marginBottom: 6 }}>
           <Text>My Products</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{ margin: 6 }}>
@@ -41,10 +43,14 @@ export default function AboutMeScreen() {
         <TouchableOpacity style={{ margin: 6 }}>
           <Text>Notification</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ margin: 6 }}>
+        <TouchableOpacity 
+        onPress={() => props.navigation.navigate('Create Product')}
+        style={{ margin: 6 }}>
           <Text>Sell Product</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ margin: 6 }}>
+        <TouchableOpacity 
+        onPress={() => props.navigation.navigate('EditProfile')}
+        style={{ margin: 6 }}>
           <Text style={styles.toProfile}>Edit Profile</Text>
         </TouchableOpacity>
       </View>
@@ -88,12 +94,13 @@ const styles = StyleSheet.create({
   logoBack: {
     height: 20,
     width: 20,
-    //marginRight: 295
+    marginLeft: '5%'
   },
 
   logoImage: {
     height: 25,
     width: 30,
+    marginRight: '5%'
    // marginLeft: 10
   },
 

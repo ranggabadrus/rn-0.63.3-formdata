@@ -38,23 +38,23 @@ export default function EditProfileScreen(props) {
       behavior={Platform.OS == "android" ? "padding" : "height"}
       style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        
         <ImageBackground style={{ width: '100%', height: '100%', backgroundColor: '#F7F6ED' }}>
           <View style={{ backgroundColor: '#FFFFFF', flexDirection: 'row', height: '5%' }}>
             <Image source={require('../Sample/img/Vector.png')} style={{ marginLeft: 5, height: 25, width: 30 }} />
             
             <Text style={{ marginLeft: 110, fontSize: 18 }}>Edit Profile</Text>
            
-           
             <TouchableOpacity>
-                <Image source={require('../Sample/img/menu.png')} style={{ marginLeft: 90, height: 20, width: 20 }} />
+                <Image source={require('../Sample/img/menu.png')} style={{ marginLeft: '55%', height: 20, width: 20 }} />
             </TouchableOpacity>
           </View>
 
-          <View>
+          <View style={{height: '3%'}}>
             {/* <Text>{ data.length!==0 && data.data.profile_image}</Text> */}
-            <Text>{} </Text>
+            <Text></Text>
           </View>
-          <View style={{ backgroundColor: '#FFFFFF', padding: 20 }}>
+          <View style={{ backgroundColor: '#FFFFFF', padding: 20, height: '92%' }}>
             <View style={{ alignItems: 'center' }}>
             {  data.length!==0 ?  
                 <Image source={{uri:data.data.profile_image}} style={styles.userImage}  />  :
@@ -78,7 +78,7 @@ export default function EditProfileScreen(props) {
               <TextInput style={styles.txtInput2} />
             </View>
 
-            <View style={{ marginTop: '16%', padding: 10 }}>
+            <View style={{ marginTop: '20%', padding: 10 }}>
               <TouchableOpacity
                 style={styles.buttonSave}>
                 <Text style={{ textAlign: 'center', color: 'white' }}>Save Changes</Text>

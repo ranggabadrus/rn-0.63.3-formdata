@@ -86,7 +86,6 @@ const LoginScreen = (props) => {
                   </View>
 
                 </View>
-
               </ImageBackground>
 
             </ImageBackground>
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
 
   imageBackground2: {
     width: '100%',
-    height: '70%',
+    height: '68%',
   },
 
   textPress: {
