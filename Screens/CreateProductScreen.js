@@ -38,7 +38,6 @@ export default function CreateProductScreen(props) {
                     <TextInput style={styles.txtInput} />
 
                     <TouchableOpacity
-                        onPress={() => props.navigation.navigate('CreateProductScreen2')}
                         style={styles.buttonSave}>
                         <Text style={{ textAlign: 'center', color: 'white' }}>Create</Text>
                     </TouchableOpacity>
