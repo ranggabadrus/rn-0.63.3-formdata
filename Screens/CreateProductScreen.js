@@ -61,13 +61,17 @@ export default function CreateProductScreen(props) {
         form.append('product_image',avatar)
 
         console.log('token create product',token)
-        const response = await Axios.post(CREATE_PRODUCTS_URL,
-            form,{
-          headers: {
-              token : token,
-              "Content-Type": "multipart/form-data"
-          }      
-        })  
+        const response = await Axios({
+            method :'post',
+            url : CREATE_PRODUCTS_URL,
+            data : form,    
+            headers: {
+                token : token,
+                "Content-Type": "multipart/form-data" }
+  
+        })
+                           
+          
         } catch (error) {
                 console.log(response)
                 console.log('salah : ',error)}
@@ -98,8 +102,8 @@ export default function CreateProductScreen(props) {
             <View style={{ height: '92%', backgroundColor: '#FFFFFF' }}>
                 <View style={{ flexDirection: 'row', height: '30%' }}>
                     <Image source={
-                        avatar ? {uri:avatar} :
-                        require('../Sample/img/kelapa.jpg')} style={styles.toUploaded} />
+                        avatar ? {uri:avatar} : {} }
+                        style={styles.toUploaded} />
                     <TouchableOpacity 
                         onPress ={handleUploadImage}
                         style={{ alignSelf: 'flex-end' }}>
@@ -168,7 +172,7 @@ const styles = StyleSheet.create({
 
     toUploaded: {
         width: '40%',
-        height: '80%',
+        height: '60%',
         marginTop: '10%',
         marginLeft: '5%'
     },
