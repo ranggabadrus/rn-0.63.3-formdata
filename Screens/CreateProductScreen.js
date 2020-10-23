@@ -54,25 +54,33 @@ export default function CreateProductScreen(props) {
         form.append('product_name',product_name)
         form.append('description',description)
         form.append('category',category)
-        form.append('stock',stock)
-        form.append('price',price)
+        form.append('stock',parseInt(stock))
+        form.append('price',parseInt(price))
         form.append('discount',discount)
         form.append('weight',weight)
         form.append('product_image',avatar)
-
+        
+        console.log('isi form : ',form)
+                
         console.log('token create product',token)
-        const response = await Axios({
-            method :'post',
-            url : CREATE_PRODUCTS_URL,
-            data : form,    
-            headers: {
-                token : token,
-                "Content-Type": "multipart/form-data" }
-  
-        })
-                           
-          
-        } catch (error) {
+        // const response = await Axios.post({
+        //     method :'post',
+        //     url : CREATE_PRODUCTS_URL,
+        //     data : form,    
+        //     headers: {
+        //         token : token,
+        //         "Content-Type": "multipart/form-data" }
+        // })
+            const response = Axios.post
+            ('https://pacific-oasis-23064.herokuapp.com/products/create',form ,
+            {
+                headers: { token : token,
+                         "Content-Type": "multipart/form-data" },
+                 
+            } )
+ 
+    
+    } catch (error) {
                 console.log(response)
                 console.log('salah : ',error)}
         
