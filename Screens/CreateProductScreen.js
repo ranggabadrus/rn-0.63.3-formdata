@@ -1,45 +1,90 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableNativeFeedbackComponent } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { set, stopClock } from 'react-native-reanimated'
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground'
 import {CREATE_PRODUCTS_URL} from "../Redux/constants/general";
 import {useSelector} from 'react-redux';
 import Axios from 'axios'
+import star from '../Sample/img/star.png'
+import  ImagePicker from 'react-native-image-picker'
+
 
 export default function CreateProductScreen(props) {
     const [product_name,setProduct_Name] = useState(null)
     const [category,setCategory] = useState(null)
     const [price,setPrice] = useState(null)
     const [stock,setStock] = useState(null)
-    const [product_image,setProduct_Image] = useState('https://placeimg.com/640/480/nature')
+    //const [product_image,setProduct_Image] = useState('https://placeimg.com/640/480/nature')
     const [description,setDescription] = useState(null)
     const [discount,setDiscount] = useState(10)
     const [weight,setWeight] = useState(10)
+    const [avatar,setAvatar] =useState(null)
     
+    const handleUploadImage = () =>{
+        let options = {
+            title: 'Select Avatar', 
+            cameraType: 'front',
+            mediaType: 'photo' ,
+            storageOptions: {
+            skipBackup: true,
+            path: 'images',
+            },
+          };
+          ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+            if (response.didCancel) {
+              console.log('User cancelled image picker');
+            } else if (response.error) {
+              console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+              console.log('User tapped custom button: ', response.customButton);
+              alert(response.customButton);
+            } else {
+              setAvatar(response.uri) }
+            })
+            console.log(avatar)
+          };
+          
     const token = useSelector((state)=>state.UserAuthReducers.token) 
 
-    console.log(token)
-    const handleOnCreate  =() =>{
-        Axios.post(CREATE_PRODUCTS_URL,{
-            headers : { token : token },
-            data : { product_name,
-                    category,
-                    description,
-                    price,
-                    stock,
-                    discount,
-                    weight,
-                    product_image
-                  }
-        })
-    }    
+    const handleCreate = async() =>{
+        try {
+        const form = new FormData()
+        form.append('product_name',product_name)
+        form.append('description',description)
+        form.append('category',category)
+        form.append('stock',stock)
+        form.append('price',price)
+        form.append('discount',discount)
+        form.append('weight',weight)
+        form.append('product_image',avatar)
+
+        console.log('token create product',token)
+        const response = await Axios.post(CREATE_PRODUCTS_URL,
+            form,{
+          headers: {
+              token : token,
+              "Content-Type": "multipart/form-data"
+          }      
+        })  
+        } catch (error) {
+                console.log(response)
+                console.log('salah : ',error)}
+        
     
-    //console.log()
+    }
+
     
+    
+    
+   
+        
+        
     return (
 
         <ImageBackground style={{ width: '100%', height: '100%', backgroundColor: '#F7F6ED' }}>
+            {/* <Image source={star} style ={{width:50,height:50}}  /> */}
             <View style={{ backgroundColor: '#FFFFFF', flexDirection: 'row', height: '6%' }}>
                 <Image source={require('../Sample/img/Vector.png')} style={{ marginLeft: 10, height: 25, width: 30, marginTop: 7 }} />
                 <Text style={{ marginLeft: 110, fontSize: 18, marginTop: 5 }}>Create Product</Text>
@@ -52,8 +97,12 @@ export default function CreateProductScreen(props) {
 
             <View style={{ height: '92%', backgroundColor: '#FFFFFF' }}>
                 <View style={{ flexDirection: 'row', height: '30%' }}>
-                    <Image source={require('../Sample/img/kelapa.jpg')} style={styles.toUploaded} />
-                    <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
+                    <Image source={
+                        avatar ? {uri:avatar} :
+                        require('../Sample/img/kelapa.jpg')} style={styles.toUploaded} />
+                    <TouchableOpacity 
+                        onPress ={handleUploadImage}
+                        style={{ alignSelf: 'flex-end' }}>
                         <Text style={styles.toUpload}>Upload Image</Text>
                     </TouchableOpacity>
                 </View>
@@ -90,7 +139,7 @@ export default function CreateProductScreen(props) {
                         style={styles.txtInput} />
 
                     <TouchableOpacity
-                        onPress ={handleOnCreate}
+                        onPress ={handleCreate}
                         style={styles.buttonSave}>
                         <Text style={{ textAlign: 'center', color: 'white' }}>Create</Text>
                     </TouchableOpacity>

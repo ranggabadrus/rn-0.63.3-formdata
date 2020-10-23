@@ -6,11 +6,11 @@ import {useSelector,useDispatch} from 'react-redux'
 import { getUserId } from '../Redux/actions/UserIdActions'
 import {GET_USER_URL} from '../Redux/constants/general'
 //import {getDataUser} from '../Redux/constants/general'
-
+import ImagePicker from 'react-native-image-picker'
 
 export default function EditProfileScreen(props) {
   const [data,setData]  =useState([])
-  
+  const [avatar,setAvatar] =useState(null)  
   
   
   const dispatch = useDispatch()
@@ -28,6 +28,30 @@ export default function EditProfileScreen(props) {
           .then(r=> setData(r.data) )
   }
   
+  const handleUploadImage = () =>{
+    let options = {
+        title: 'Select Avatar', 
+        cameraType: 'front',
+        mediaType: 'photo' ,
+        storageOptions: {
+        skipBackup: true,
+        path: 'images',
+        },
+      };
+      ImagePicker.showImagePicker(options, (response) => {
+        console.log('Response = ', response);
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+          alert(response.customButton);
+        } else {
+          setAvatar(response.uri) }
+        })
+        console.log(avatar)
+      };
   console.log('data :' ,data)
   
   
@@ -56,12 +80,16 @@ export default function EditProfileScreen(props) {
           </View>
           <View style={{ backgroundColor: '#FFFFFF', padding: 20, height: '92%' }}>
             <View style={{ alignItems: 'center' }}>
-            {  data.length!==0 ?  
-                <Image source={{uri:data.data.profile_image}} style={styles.userImage}  />  :
-                <Image source={require('../Sample/img/userimage.png')} style={styles.userImage} />}
-            
+                <Image source= {  
+                     (data.length!==0 && avatar === null) ? 
+                     {uri:data.data.profile_image} :
+                     {uri:avatar } }  
+                     style={styles.userImage}  />  
+                           
               <TouchableOpacity>
-                <Text style={styles.toProfile}>UPLOAD IMAGE</Text>
+                <Text 
+                      onPress ={handleUploadImage}
+                      style={styles.toProfile}>UPLOAD IMAGE</Text>
               </TouchableOpacity>
             </View>
 
@@ -107,7 +135,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     alignSelf: 'center',
-    tintColor: '#BBE4D8',
+    //tintColor: '#BBE4D8',
     marginBottom: 20
   },
 

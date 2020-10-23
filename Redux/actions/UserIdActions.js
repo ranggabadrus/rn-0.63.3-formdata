@@ -26,8 +26,9 @@ export const getUserId = (token) =>{
             console.log('action request ') 
             console.log('token : ',token)
             dispatch( getRequest() )
-            const response = await Axios.get( 'https://pacific-oasis-23064.herokuapp.com/user/id',{
-                 headers : { token : token }
+            const response = await Axios.get
+            ( 'https://pacific-oasis-23064.herokuapp.com/user/id',{
+                    headers : { token : token }
             })    
             console.log('action request done')
             
